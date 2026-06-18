@@ -1,3 +1,10 @@
-.DS_Store
-Thumbs.db
-*.swp
+# Binaries (root build artefacts only — cmd/server and cmd/ingest are source)
+/server
+/ingest
+
+# Environment
+.env
+
+# Frontend
+web/node_modules/
+web/dist/

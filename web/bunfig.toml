@@ -1,0 +1,6 @@
+# web/bunfig.toml
+[serve.static]
+dir = "public"
+
+[dev]
+port = 3000

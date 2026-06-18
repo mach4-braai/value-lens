@@ -1,0 +1,30 @@
+[tools]
+go = "1.22"
+node = "22"
+bun = "latest"
+
+[tasks.dev]
+run = "go run ./cmd/server"
+
+[tasks.db]
+run = "docker compose up -d postgres"
+
+[tasks.ollama]
+run = "docker compose up -d ollama"
+
+[tasks.migrate]
+run = """
+for f in migrations/*.sql; do
+  psql "$DATABASE_URL" -f "$f"
+done
+"""
+
+[tasks.web]
+dir = "web"
+run = "bun run dev"
+
+[tasks.ingest]
+run = "go run ./cmd/ingest"
+
+[tasks."ingest:one"]
+run = "go run ./cmd/ingest {{arg(name='ticker')}}"

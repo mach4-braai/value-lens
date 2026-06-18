@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: valuelens
+      POSTGRES_USER: valuelens
+      POSTGRES_PASSWORD: valuelens
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  pgdata:
+  ollama_data:
